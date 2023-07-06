@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { exec } from 'child_process';
-import { existsSync, unlinkSync, writeFileSync } from 'fs';
+import { existsSync, unlinkSync, writeFileSync, chmodSync } from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { homedir } from 'os';
 import { chdir } from 'process';
@@ -23,7 +23,8 @@ async function handler(
       unlinkSync('/home/admin/run.sh')
     };
     writeFileSync('/home/admin/run.sh', script);
-    
+    chmodSync('/home/admin/run.sh', 0o755); 
+
     const HOME =homedir();
 
     chdir(HOME); 
