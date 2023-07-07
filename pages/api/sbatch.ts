@@ -23,7 +23,7 @@ async function handler(
       unlinkSync('/home/admin/run.sh')
     };
     writeFileSync('/home/admin/run.sh', script);
-    chmodSync('/home/admin/run.sh', 0o755); 
+    // chmodSync('/home/admin/run.sh', 0o755); 
 
     const HOME =homedir();
 
